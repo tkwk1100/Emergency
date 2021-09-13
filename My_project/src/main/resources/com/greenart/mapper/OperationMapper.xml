@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.OperationMapper">
+<insert id="insertOperation">
+    INSERT INTO Emergency.operation(
+        o_dutyName, hpid, o_MKioskTy25, o_MKioskTy1, o_MKioskTy2, o_MKioskTy3, o_MKioskTy4, o_MKioskTy5, o_MKioskTy6,
+        o_MKioskTy7, o_MKioskTy8, o_MKioskTy9, o_MKioskTy10, o_MKioskTy11, o_region
+        )
+    VALUES(
+        #{o_dutyName}, #{hpid}, #{o_MKioskTy25}, #{o_MKioskTy1}, #{o_MKioskTy2}, #{o_MKioskTy3}, #{o_MKioskTy4}, #{o_MKioskTy5}, #{o_MKioskTy6},
+        #{o_MKioskTy7}, #{o_MKioskTy8}, #{o_MKioskTy9}, #{o_MKioskTy10}, #{o_MKioskTy11}, #{o_region}
+        )
+</insert>
+
+<update id="updataOperation">
+    UPDATE Emergency.operation
+    SET 
+        o_dutyName=#{o_dutyName},
+        hpid=#{hpid},
+        o_MKioskTy25=#{o_MKioskTy25},
+        o_MKioskTy1=#{o_MKioskTy1},
+        o_MKioskTy2=#{o_MKioskTy2},
+        o_MKioskTy3=#{o_MKioskTy3},
+        o_MKioskTy4=#{o_MKioskTy4},
+        o_MKioskTy5=#{o_MKioskTy5},
+        o_MKioskTy6=#{o_MKioskTy6},
+        o_MKioskTy7=#{o_MKioskTy7},
+        o_MKioskTy8=#{o_MKioskTy8},
+        o_MKioskTy9=#{o_MKioskTy9},
+        o_MKioskTy10=#{o_MKioskTy10},
+        o_MKioskTy11=#{o_MKioskTy11},
+        o_region=#{o_region}
+    WHERE 
+        hpid=#{hpid}
+</update>
+
+<select id="selectOperation" resultType="com.greenart.vo.OperationVO">
+    SELECT * FROM operation WHERE o_region = #{o_region}and o_dutyName like #{keyword}
+</select>
+
+<select id="selectCntOperation" resultType="com.greenart.vo.OperationVO">
+select count(*)as cnt ,o_region from operation group by o_region;
+</select>
+
+</mapper>

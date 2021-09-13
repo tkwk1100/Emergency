@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.EmergencyMapper">
+    <insert id="insertEmergencyInfo">
+        INSERT INTO Emergency.EmergencyInfo(
+            hv1, hv2, hv3, hv4, hv5, hv6, hv7, hv8, hv9, hv10, hv11, hv12, dutyTel3, 
+            hpid, hvamyn, hvangioayn, hvcc, hvccc, hvctayn, hvec, hvgc, hvicc, hvidate,
+            hvmriayn, hvncc, hvoc, hvventiayn, dutyName, phpid, rnum, region
+            )
+        VALUES(
+            #{hv1}, #{hv2}, #{hv3}, #{hv4}, #{hv5}, #{hv6}, #{hv7}, #{hv8}, #{hv9}, #{hv10}, #{hv11}, #{hv12}, #{dutyTel3}, 
+            #{hpid}, #{hvamyn}, #{hvangioayn}, #{hvcc}, #{hvccc}, #{hvctayn}, #{hvec}, #{hvgc}, #{hvicc}, #{hvidate},
+            #{hvmriayn}, #{hvncc}, #{hvoc}, #{hvventiayn}, #{dutyName}, #{phpid}, #{rnum}, #{region}
+            );
+    </insert>
+
+    <update id="updataEmergencyInfo">
+    UPDATE Emergency.emergencyinfo
+    SET 
+        hv1=#{hv1}, 
+        hv2=#{hv2}, 
+        hv3=#{hv3}, 
+        hv4=#{hv4}, 
+        hv5=#{hv5}, 
+        hv6=#{hv6}, 
+        hv7=#{hv7}, 
+        hv8=#{hv8}, 
+        hv9=#{hv9}, 
+        hv10=#{hv10}, 
+        hv11=#{hv11}, 
+        hv12=#{hv12}, 
+        dutyTel3=#{dutyTel3}, 
+        hpid=#{hpid}, 
+        hvamyn=#{hvamyn}, 
+        hvangioayn=#{hvangioayn}, 
+        hvcc=#{hvcc}, 
+        hvccc=#{hvccc}, 
+        hvctayn=#{hvctayn}, 
+        hvec=#{hvec}, 
+        hvgc=#{hvgc}, 
+        hvicc=#{hvicc}, 
+        hvidate=#{hvidate}, 
+        hvmriayn=#{hvmriayn}, 
+        hvncc=#{hvncc}, 
+        hvoc=#{hvoc}, 
+        hvventiayn=#{hvventiayn}, 
+        dutyName=#{dutyName}, 
+        phpid=#{phpid}, 
+        rnum=#{rnum}, 
+        region=#{region}
+    WHERE
+        hpid=#{hpid}
+
+    </update>
+
+    
+<!-- 선택지역 "안"에있는 병원 검색 -->
+    <select id="selectEmergencyRegionInfo" resultType="com.greenart.vo.EmergencyVO">
+        SELECT * FROM EmergencyInfo WHERE region = #{region} and dutyName like #{keyword}
+    </select> 
+
+
+<!-- 병원 상세내용 + Detail Page-->
+    <select id="selectHospital_info" resultType="com.greenart.vo.HospitalVO">
+        select distinct a2.*, d.ea_dutyAddr, d.ea_dutyEmclsName, d.ea_region, dutyName from
+            (
+                (
+                    select a1.*, 
+                        c.MKioskTy25,c.MKioskTy1,c.MKioskTy2,c.MKioskTy3,c.MKioskTy4,c.MKioskTy5,
+                        c.MKioskTy6,c.MKioskTy7,c.MKioskTy8,c.MKioskTy9,c.MKioskTy10,c.MKioskTy11,
+                        c.dgidIdName, c.latitude, c.longitude, c.dutyAddr
+                    from
+                    (
+                        (
+                            SELECT 
+                                a.hv1,a.hv2,a.hv3,a.hv4,a.hv5,a.hv6,a.hv7,a.hv8,a.hv9,a.hv10,a.hv11,a.hv12,
+                                a.dutyTel3,a.hvamyn,a.hvangioayn,a.hvcc,a.hvccc,a.hvctayn,
+                                a.hvec,a.hvgc,a.hvicc,a.hvidate,a.hvmriayn,a.hvncc,a.hvoc,a.hvventiayn,a.phpid,a.rnum,
+                                a.hpid, a.dutyName, b.dutyDivName, b.dutyFax, b.dutyTel1
+                            FROM emergencyinfo a INNER JOIN emergency_locationinfo b ON a.hpid = b.hpid
+                        ) a1 INNER JOIN emergencybasi c
+                        ON a1.hpid = c.hpid
+                    )
+                ) a2 INNER JOIN emergency_agency d
+                on a2.hpid = d.ea_hpid
+            )
+    where hpid = #{hpid} 
+    limit 1
+    </select>
+
+    <!-- 지역이름 EmergencyAgency 에서 파싱 할깨쓰는것-->
+    <select id="selectRegionCodes" resultType="java.lang.String">   
+    select distinct region from Emergencyinfo
+    </select>
+
+    <!-- 지역별 응급실 통계 자료 계산할것 -->
+    <select id="selectEmergencyRegion" resultType="com.greenart.vo.SidoVO"> 
+    select t.region, sum(t.hvec) as ERbedinfo , sum(t.hvgc) as AcuBedInfo
+    from 
+    (
+        select
+            *
+        from emergencyinfo
+        where (hpid, hvidate) in (
+            select hpid, max(hvidate) as hvidate
+            from emergencyinfo group by hpid
+        )
+        order by hvidate desc
+    ) t
+    <!-- where t.region = #{region} -->
+    group by t.region
+
+    </select>
+
+
+
+</mapper>

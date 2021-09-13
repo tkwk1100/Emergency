@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.EmergencyAgencyMapper">
+<insert id="insertEmergencyAgency">
+    INSERT INTO Emergency.emergency_agency(
+        ea_hpid, ea_phpid, ea_dutyEmcls, ea_dutyEmclsName, ea_dutyAddr, ea_dutyName, ea_dutyTel3, ea_region
+    )
+    VALUES(
+        #{ea_hpid}, #{ea_phpid}, #{ea_dutyEmcls}, #{ea_dutyEmclsName}, #{ea_dutyAddr}, #{ea_dutyName}, #{ea_dutyTel3}, #{ea_region}
+    )
+</insert>
+
+</mapper>

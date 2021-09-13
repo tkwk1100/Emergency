@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.TCL_LocationMapper">
+<insert id="insertTCL_LocationInfo">
+INSERT INTO Emergency.tcl_location(
+    dutyAddr, hpid, dutyDiv, dutyDivName, dutyName, dutyTel1, dutyFax, latitude, longitude
+    )
+VALUES(
+    #{dutyAddr}, #{hpid}, #{dutyDiv}, #{dutyDivName}, #{dutyName}, #{dutyTel1}, #{dutyFax}, #{latitude}, #{longitude}
+    );
+
+</insert>
+
+</mapper>

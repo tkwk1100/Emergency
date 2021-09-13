@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.VaccionMapper">
+<insert id="insertVaccion">
+INSERT INTO Emergency.vaccion
+    (
+    v_dywk, v_endTm, v_hldyYn, v_lunchSttTm, v_lunchEndTm, v_orgTlno, v_orgZipaddr, v_orgcd, v_orgnm, v_slrYmd, v_sttTm
+    )
+VALUES
+(
+    #{v_dywk}, #{v_endTm}, #{v_hldyYn}, #{v_lunchSttTm}, #{v_lunchEndTm}, #{v_orgTlno}, #{v_orgZipaddr}, #{v_orgcd}, #{v_orgnm}, #{v_slrYmd}, #{v_sttTm}
+);
+
+</insert>
+
+</mapper>

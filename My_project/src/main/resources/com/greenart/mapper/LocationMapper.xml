@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.LocationMapper">
+<insert id="insertLocationInfo">
+    INSERT INTO emergency_locationinfo(
+        dutyAddr, dutyDiv, dutyDivName, dutyFax, dutyName, dutyTel1, hpid, latitude, longitude, region
+    )
+    VALUES(
+    #{dutyAddr}, #{dutyDiv}, #{dutyDivName}, #{dutyFax}, #{dutyName}, #{dutyTel1}, #{hpid}, #{latitude}, #{longitude}, #{region}
+    );
+</insert>
+<!-- 병원 위도 경도 LocationAPIController 에서 파싱할떄쓰는것-->
+<select id="selectTarget" resultType="com.greenart.vo.LocationVO">
+    select latitude, longitude from emergencybasi
+</select>
+
+<select id="selectLocationInfo" resultType="com.greenart.vo.LocationVO">
+select * from emergency_locationinfo 
+</select>
+
+<select id="selectRegionLocation" resultType="com.greenart.vo.LocationVO">
+select * from emergency_locationinfo  WHERE region = #{region}
+</select>
+</mapper>

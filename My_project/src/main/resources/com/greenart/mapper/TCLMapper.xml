@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.TCLMapper">
+<insert id="insertTCLinfo">
+        INSERT INTO Emergency.tclinfo(
+            hpid, phpid, dutyEmcls, dutyEmclsName, dutyAddr, dutyName, dutyTel1, dutyTel3, wgs84Lon, wgs84Lat
+            )
+        VALUES(
+            #{hpid}, #{phpid}, #{dutyEmcls}, #{dutyEmclsName}, #{dutyAddr}, #{dutyName}, #{dutyTel1}, #{dutyTel3}, #{wgs84Lon}, #{wgs84Lat}
+            );
+</insert>
+<!-- 위도경도 -->
+    <select id="selectTCLPosition" resultType="com.greenart.vo.TCLPositionVO">
+        SELECT distinct wgs84Lon as lon, wgs84Lat as lat  from tclinfo
+    </select>
+
+    <select id="selectTCLAll" resultType="com.greenart.vo.TCLVO">
+        select * from tclinfo
+    </select>
+    <!-- 기관id가져오는 코드 -->
+    <select id="selectTCLCodes" resultType="java.lang.String">
+        SELECT DISTINCT hpid FROM tclinfo
+    </select>
+
+    <select id="selectBasicInfo" resultType="com.greenart.vo.TCL_BasicsVO">
+        select distinct a.* from 
+	tcl_basics a inner join
+	tclinfo b on
+	a.tb_hpid = b.hpid
+	where tb_hpid = #{tb_hpid}
+    </select>
+
+    <select id="selectTCLBed" resultType="com.greenart.vo.EmergencyVO"> 
+    select distinct t.dutyName as dutyName, t.hpid as hpid , t.hvec as hvec , t.hvgc as hvgc
+    from 
+    (
+        select
+            *
+        from emergencyinfo
+        where (hpid, hvidate) in (
+            select hpid, max(hvidate) 
+            from tclinfo group by hpid
+        )
+        order by hvidate desc
+    ) t
+    group by t.hpid
+    </select>
+</mapper>

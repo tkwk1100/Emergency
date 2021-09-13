@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.TCL_BasicsMapper">
+<insert id="insertTCL_Basics">
+    INSERT INTO Emergency.tcl_basics(
+        tb_dgidIdName, tb_hpid, tb_dutyName, tb_dutyAddr, tb_dutyTel1, tb_dutyTel3, tb_MKioskTy25, tb_MKioskTy1, 
+        tb_MKioskTy2, tb_MKioskTy3, tb_MKioskTy4, tb_MKioskTy5, tb_MKioskTy6, tb_MKioskTy7, tb_MKioskTy8, tb_MKioskTy9, tb_MKioskTy10, tb_MKioskTy11
+        )
+    VALUES(
+        #{tb_dgidIdName}, #{tb_hpid}, #{tb_dutyName}, #{tb_dutyAddr}, #{tb_dutyTel1}, #{tb_dutyTel3}, #{tb_MKioskTy25}, #{tb_MKioskTy1},
+        #{tb_MKioskTy2}, #{tb_MKioskTy3}, #{tb_MKioskTy4}, #{tb_MKioskTy5}, #{tb_MKioskTy6}, #{tb_MKioskTy7}, #{tb_MKioskTy8}, #{tb_MKioskTy9}, #{tb_MKioskTy10}, #{tb_MKioskTy11}
+        );
+
+</insert>
+
+</mapper>

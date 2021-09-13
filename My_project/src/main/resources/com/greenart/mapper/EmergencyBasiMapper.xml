@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenart.mapper.EmergencyBasiMapper">
+<insert id="insertEmergencyBasiInfo">
+    INSERT INTO Emergency.emergencybasi(
+        MKioskTy25, MKioskTy1, MKioskTy2, MKioskTy3, MKioskTy4, MKioskTy5, MKioskTy6,
+        MKioskTy7, MKioskTy8, MKioskTy9, MKioskTy10, MKioskTy11, dgidIdName, dutyName, hpid, latitude, longitude, dutyAddr
+        )
+    VALUES(
+        #{MKioskTy25}, #{MKioskTy1}, #{MKioskTy2}, #{MKioskTy3}, #{MKioskTy4}, #{MKioskTy5}, #{MKioskTy6}, 
+        #{MKioskTy7}, #{MKioskTy8}, #{MKioskTy9}, #{MKioskTy10}, #{MKioskTy11}, #{dgidIdName}, #{dutyName}, #{hpid}, #{latitude}, #{longitude}, #{dutyAddr}
+        );  
+
+</insert>
+
+<!-- 응급의료기관 파싱을위한 병원id -->
+<select id="selectHospitalCodes" resultType="java.lang.String">
+    SELECT DISTINCT hpid FROM emergencyinfo
+</select>
+
+</mapper>

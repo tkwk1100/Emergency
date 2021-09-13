@@ -1,0 +1,61 @@
+#stats {
+    width: 1500px;
+}
+#stats td, #stats th {
+    border: 1px solid #ccc; text-align: center;
+}
+#stats th {
+    font-weight: bold;
+    background-color: #eef;
+}
+#stats .space td{padding:20px;}
+
+.detail_view {
+    color: #fff;
+    width: 1500px;
+    position: fixed; left:50%; top: 50%;
+    transform:translate(-50%, -50%);
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+}
+.detail_view table th:first-child {width: 120px;}
+.detail_view > #close {
+    position: absolute; right: 10px; top: 10px;
+    font-size: 48px; z-index: 989999;
+}
+.detail_view {position: fixed; background-color: #fff; z-index: 999; padding:20px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3); padding-top: 80px;
+    border-radius: 5px; left: 50%; margin-left: -130px; display: none;
+}
+.detail_view_wrap {
+    width: 100%; position: absolute; top: 0; left: 0;
+    padding:20px; color: #333; user-select:none; cursor:grab;
+    font-size: 15px; text-align: center; font-weight: 700; box-sizing: border-box;
+}
+.detail_view_wrap td {
+    align-content: center; vertical-align: middle;
+    padding-bottom: 10px; padding-right: 10px;
+}
+#Details td, #Details th{
+    /* width: 700px; border: 1px solid #ccc; text-align: center; */
+}
+
+.left_menu {width: 250px;}
+.left_menu a {display: block;}
+#logo {font-family: "Roboto", sans-serif; color: #333; font-weight: 700;
+    font-size: 24px; text-decoration: none; text-align: center;
+    padding:20px 0; background-color: #fff; box-shadow:0 0 10px rgba(0,0,0,0.2);
+    border-radius: 5px; margin-bottom: 25px;
+}
+.main_menu a {
+    font-size: 16px; font-family: "Roboto", sans-serif; text-decoration: none; background-color: #fff;
+    color: #333; font-weight: 500; padding:15px; position: relative; margin-bottom: 15px;
+    overflow: hidden; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.main_menu a span { font-size: 13px; font-family: "Noto Sans KR", sans-serif; font-weight: 300;}
+.main_menu a::before {content:""; display: inline-block; position: absolute; left: 0; top: 0;
+    width: 5px; height: 100%; background-color: #fff;
+}
+.main_menu a:hover::before {
+    background-color: #333;
+}
