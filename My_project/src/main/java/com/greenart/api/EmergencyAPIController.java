@@ -140,8 +140,8 @@ public class EmergencyAPIController {
                     // vo.setRegion(region);//
                     vo.setRegion(region.get(j));
 
-                    // mapper.updataEmergencyInfo(vo);
-                    mapper.insertEmergencyInfo(vo); //db 로 날려
+                    mapper.updataEmergencyInfo(vo);
+                    // mapper.insertEmergencyInfo(vo); //db 로 날려
 
                 }
 
