@@ -19,4 +19,30 @@
     SELECT DISTINCT hpid FROM emergencyinfo
 </select>
 
+<update id="updataEmergencyBasi">
+    UPDATE emergency.emergencybasi
+    SET 
+        MKioskTy25=#{MKioskTy25},
+        MKioskTy1=#{MKioskTy1},
+        MKioskTy2=#{MKioskTy2},
+        MKioskTy3=#{MKioskTy3},
+        MKioskTy4=#{MKioskTy4},
+        MKioskTy5=#{MKioskTy5},
+        MKioskTy6=#{MKioskTy6},
+        MKioskTy7=#{MKioskTy7},
+        MKioskTy8=#{MKioskTy8},
+        MKioskTy9=#{MKioskTy9},
+        MKioskTy10=#{MKioskTy10},
+        MKioskTy11=#{MKioskTy11},
+        dgidIdName=#{dgidIdName},
+        dutyName=#{dutyName},
+        hpid=#{hpid},
+        latitude=#{latitude}, 
+        longitude=#{longitude},
+        dutyAddr=#{dutyAddr}
+    WHERE 
+        hpid=#{hpid}
+
+</update>
+
 </mapper>

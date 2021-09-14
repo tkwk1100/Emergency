@@ -9,5 +9,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface EmergencyBasiMapper {
     public void insertEmergencyBasiInfo(EmergencyBasiVO vo);
+    public void updataEmergencyBasi(EmergencyBasiVO vo);
     public List<String> selectHospitalCodes();
 }
