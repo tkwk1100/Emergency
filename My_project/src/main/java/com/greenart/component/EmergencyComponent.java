@@ -29,7 +29,7 @@ public class EmergencyComponent {
     @Autowired
     EmergencyService service;
     // 30분에 한번 호출 //응급실 실시간 가용병상정보 조회
-    //@Scheduled(cron="0 30 * * * *")// 일단멈춤
+    @Scheduled(cron="0 30 * * * *")// 일단멈춤
     public String Emergency(
         // @RequestParam String region
     ) throws IOException {
