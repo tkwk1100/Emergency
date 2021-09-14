@@ -33,7 +33,7 @@ public class EmergencyBasiComponent {
     @Autowired
     EmergencyBasiService b_service;
     // 30분에 한번 호출 //응급의료기관 기본정보 조회
-    @Scheduled(cron="0 20 * * * *")// 일단멈춤
+    @Scheduled(cron="0 10 * * * *")// 일단멈춤
     public String EmergencyBasi() throws IOException {
         List<String> hospitalCodes = service.selectHospitalCodes();
         for(int j=0; j<hospitalCodes.size(); j++){
