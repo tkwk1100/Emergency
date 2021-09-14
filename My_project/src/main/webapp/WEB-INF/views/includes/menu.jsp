@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="left_menu">
-        <a href="/" id="logo">의료 기관 정보</a>
+        <a href="/" id="logo">응급 의료 기관 정보</a>
         <ul class="main_menu">
             <li>
                 <a href="/"><span>응급실 실시간 가용병상정보</span></a>
