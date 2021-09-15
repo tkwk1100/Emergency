@@ -37,7 +37,7 @@ public class EmergencyAPIController {
     EmergencyMapper mapper;
     @Autowired
     EmergencyService service;
-    @GetMapping("/api/Emergency") //응급실 실시간 가용병상정보 조회
+    @GetMapping("/Emergency") //응급실 실시간 가용병상정보 조회
     public String Emergency(
         // @RequestParam String region
     ) throws IOException {
@@ -140,8 +140,8 @@ public class EmergencyAPIController {
                     // vo.setRegion(region);//
                     vo.setRegion(region.get(j));
 
-                    // mapper.updataEmergencyInfo(vo);
-                    mapper.insertEmergencyInfo(vo); //db 로 날려
+                    mapper.updataEmergencyInfo(vo);
+                    // mapper.insertEmergencyInfo(vo); //db 로 날려
 
                 }
 
