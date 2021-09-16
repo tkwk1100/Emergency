@@ -31,8 +31,8 @@ public class OperationComponent {
     OperationService service;
     @Autowired
     OperationMapper mapper;
-    //3시간에 한번 호출
-    @Scheduled(cron="0 0 3 * * *")//중증질환자 수용가능정보 조회 
+    //1시간에 한번 호출
+    @Scheduled(cron="0 0 1 * * *")//중증질환자 수용가능정보 조회 
     public String Operation() throws IOException{
             List < String > region = e_service.selectRegionCodes();
         for (int j = 0; j < region.size(); j++) {

@@ -9,7 +9,6 @@ INSERT INTO Emergency.tcl_location(
 VALUES(
     #{dutyAddr}, #{hpid}, #{dutyDiv}, #{dutyDivName}, #{dutyName}, #{dutyTel1}, #{dutyFax}, #{latitude}, #{longitude}
     );
-
 </insert>
 
 </mapper>

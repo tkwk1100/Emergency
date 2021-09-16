@@ -15,16 +15,9 @@ import org.springframework.stereotype.Service;
 public class EmergencyService {
     @Autowired
     EmergencyMapper mapper;
-    // public List<EmergencyVO> selectEmergencyInfo() {
-    //     return mapper.selectEmergencyInfo();
-    // }
     public List<EmergencyVO> selectEmergencyRegionInfo(String region, String keyword) {
         return mapper.selectEmergencyRegionInfo(region, keyword);
     }
-    // 병원 "만" 검색
-    // public List<EmergencyVO>selectSearch_hospital(String dutyName) {
-    //     return mapper.selectSearch_hospital(dutyName);
-    // }
     public List<HospitalVO> selectHospital_info(String hpid) {
         return mapper.selectHospital_info(hpid);
     }

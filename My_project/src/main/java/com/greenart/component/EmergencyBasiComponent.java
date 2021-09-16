@@ -2,8 +2,7 @@ package com.greenart.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -24,7 +23,7 @@ import com.greenart.vo.EmergencyBasiVO;
 import java.io.IOException;
 
 
-
+@Component
 public class EmergencyBasiComponent {
     @Autowired
     EmergencyBasiService service;
@@ -32,8 +31,8 @@ public class EmergencyBasiComponent {
     EmergencyBasiMapper mapper;
     @Autowired
     EmergencyBasiService b_service;
-    // 30분에 한번 호출 //응급의료기관 기본정보 조회
-    @Scheduled(cron="0 20 * * * *")// 일단멈춤
+    // 40분에 한번 호출 //응급의료기관 기본정보 조회
+    @Scheduled(cron="0 40 * * * *")// 일단멈춤
     public String EmergencyBasi() throws IOException {
         List<String> hospitalCodes = service.selectHospitalCodes();
         for(int j=0; j<hospitalCodes.size(); j++){
