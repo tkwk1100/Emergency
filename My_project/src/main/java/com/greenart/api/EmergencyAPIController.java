@@ -37,7 +37,7 @@ public class EmergencyAPIController {
     EmergencyMapper mapper;
     @Autowired
     EmergencyService service;
-    @GetMapping("/Emergency") //응급실 실시간 가용병상정보 조회
+    @GetMapping("/api/Emergency") //응급실 실시간 가용병상정보 조회
     public String Emergency(
         // @RequestParam String region
     ) throws IOException {
