@@ -24,10 +24,10 @@ public class TCLService {
     public List<String> selectTCLCodes() {
         return mapper.selectTCLCodes();
     }
-    public List<TCL_BasicsVO> selectBasicInfo(String tb_hpid) {
+    public List<TCL_BasicsVO> selectBasicInfo(String tb_hpid) {//외산센터 기본정보 가져오기
         return mapper.selectBasicInfo(tb_hpid);
     }
-    public List<EmergencyVO>selectTCLBed() {
+    public List<EmergencyVO>selectTCLBed() {//외상센터 병상정보 가져오기
         return mapper.selectTCLBed();
     }
 }

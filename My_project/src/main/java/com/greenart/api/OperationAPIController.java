@@ -122,7 +122,7 @@ public class OperationAPIController {
     }
 
 
-    @GetMapping("/Operation/{o_region}")
+    @GetMapping("/Operation/{o_region}")//선택지역 "안"에있는 병원 검색
     public Map<String, Object> getOperationRegion(@PathVariable String o_region, @RequestParam String keyword) {
         keyword = "%"+keyword+"%";
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
@@ -131,7 +131,7 @@ public class OperationAPIController {
         resultMap.put("region", list);
         return resultMap;
     }
-    @GetMapping("/HOcnt")
+    @GetMapping("/HOcnt")//지역별 중증질환자 수용가능병원 개수 통계
     public Map<String, Object> getHOcnt(){
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 

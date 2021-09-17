@@ -34,11 +34,11 @@
     WHERE 
         hpid=#{hpid}
 </update>
-
+<!-- 선택지역 "안"에있는 병원 검색 -->
 <select id="selectOperation" resultType="com.greenart.vo.OperationVO">
     SELECT * FROM operation WHERE o_region = #{o_region}and o_dutyName like #{keyword}
 </select>
-
+<!-- 지역별 중증질환자 수용가능병원 개수 통계 -->
 <select id="selectCntOperation" resultType="com.greenart.vo.OperationVO">
 select count(*)as cnt ,o_region from operation group by o_region;
 </select>

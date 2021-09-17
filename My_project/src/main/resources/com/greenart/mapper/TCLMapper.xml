@@ -22,7 +22,7 @@
     <select id="selectTCLCodes" resultType="java.lang.String">
         SELECT DISTINCT hpid FROM tclinfo
     </select>
-
+<!-- 외산센터 기본정보 가져오기 -->
     <select id="selectBasicInfo" resultType="com.greenart.vo.TCL_BasicsVO">
         select distinct a.* from 
 	tcl_basics a inner join
@@ -30,7 +30,7 @@
 	a.tb_hpid = b.hpid
 	where tb_hpid = #{tb_hpid}
     </select>
-
+<!-- 외상센터 병상정보 가져오기 -->
     <select id="selectTCLBed" resultType="com.greenart.vo.EmergencyVO"> 
     select distinct t.dutyName as dutyName, t.hpid as hpid , t.hvec as hvec , t.hvgc as hvgc
     from 

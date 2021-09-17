@@ -21,7 +21,7 @@ public interface EmergencyMapper {
 
     public List<String> selectRegionCodes();
 
-    public List<SidoVO> selectEmergencyRegion();
+    public List<SidoVO> selectEmergencyRegion();//지역별 응급실 통계 자료
     
     public List<LocationVO> selectlocation(String hospital);
     

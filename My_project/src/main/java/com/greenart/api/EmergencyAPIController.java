@@ -163,7 +163,7 @@ public class EmergencyAPIController {
 
     // localhost:8077/Emergency?region=지역이름
 
-    @GetMapping("/Emergency/{region}")
+    @GetMapping("/Emergency/{region}")//선택지역 "안"에있는 병원 검색
     public Map < String, Object > getEmergencyRegionInfo(@PathVariable String region, @RequestParam String keyword) {
         keyword = "%"+keyword+"%";
         Map < String, Object > resultMap = new LinkedHashMap < String, Object > ();
@@ -173,7 +173,7 @@ public class EmergencyAPIController {
         return resultMap;
     }
 
-    @GetMapping("/Hospital_info/{hpid}")
+    @GetMapping("/Hospital_info/{hpid}")//병원 상세내용
     public Map < String, Object > getHospital_info(@PathVariable String hpid) {
         Map < String, Object > resultMap = new LinkedHashMap < String, Object > ();
 
@@ -182,7 +182,7 @@ public class EmergencyAPIController {
         return resultMap;
     }
 
-    @GetMapping("/Region_stats/{region}")
+    @GetMapping("/Region_stats/{region}")//지역별 응급실 통계 자료
     public Map<String, Object> getRegion_stats(@PathVariable String region) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 

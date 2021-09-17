@@ -39,7 +39,7 @@ public class LocationAPIController {
 
             List<LocationVO> Target = service.selectTarget();
             for(int n=0; n<Target.size(); n++) {
-
+            
                 StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552657/ErmctInfoInqireService/getEgytLcinfoInqire"); /*URL*/
                 urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=6o9k%2FijVJS6Syp4mxKkkLoK4Ax%2F5LpR6Rl0CcUgX6BB%2FzD1%2BL7FGFGaF7wocaB0J6A5B%2Bu3qY1%2FZY%2BQsDaseSQ%3D%3D"); /*Service Key*/
                 urlBuilder.append("&" + URLEncoder.encode("WGS84_LAT","UTF-8") + "=" + URLEncoder.encode(Target.get(n).getLatitude(), "UTF-8")); /*병원위도*/ //3

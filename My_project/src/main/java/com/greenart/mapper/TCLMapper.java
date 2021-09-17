@@ -15,6 +15,6 @@ public interface TCLMapper {
     public List<TCLPositionVO> selectTCLPosition();
     public List<TCLVO> selectTCLAll();
     public List<String> selectTCLCodes();
-    public List<TCL_BasicsVO> selectBasicInfo(String tb_hpid);
-    public List<EmergencyVO>selectTCLBed();
+    public List<TCL_BasicsVO> selectBasicInfo(String tb_hpid);//외산센터 기본정보 가져오기
+    public List<EmergencyVO>selectTCLBed();//외상센터 병상정보 가져오기
 }

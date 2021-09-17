@@ -41,16 +41,8 @@ public class TCLAPIController {//Trauma Center List
     ) throws IOException {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552657/ErmctInfoInqireService/getStrmListInfoInqire"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=6o9k%2FijVJS6Syp4mxKkkLoK4Ax%2F5LpR6Rl0CcUgX6BB%2FzD1%2BL7FGFGaF7wocaB0J6A5B%2Bu3qY1%2FZY%2BQsDaseSQ%3D%3D"); /*Service Key*/
-        // urlBuilder.append("&" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + URLEncoder.encode("-", "UTF-8")); /*공공데이터포털에서 받은 인증키*/
-        // urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("100", "UTF-8")); /*한 페이지 결과 수*/
-        // urlBuilder.append("&" + URLEncoder.encode("Q0","UTF-8") + "=" + URLEncoder.encode("서울특별시", "UTF-8")); /*주소(시도)*/
-        // urlBuilder.append("&" + URLEncoder.encode("Q1","UTF-8") + "=" + URLEncoder.encode("강남구", "UTF-8")); /*주소(시군구)*/
-        // urlBuilder.append("&" + URLEncoder.encode("QT","UTF-8") + "=" + URLEncoder.encode("강남구", "UTF-8")); /*월~일요일(1~7), 공휴일(8)*/
-        // urlBuilder.append("&" + URLEncoder.encode("QZ","UTF-8") + "=" + URLEncoder.encode("A", "UTF-8")); /*CODE_MST의'H000' 참조(A~H, J~O, Q)*/
-        // urlBuilder.append("&" + URLEncoder.encode("QD","UTF-8") + "=" + URLEncoder.encode("D000", "UTF-8")); /*CODE_MST의'D000' 참조(D000~D029)*/
-        // urlBuilder.append("&" + URLEncoder.encode("QN","UTF-8") + "=" + URLEncoder.encode("삼성의료원", "UTF-8")); /*기관명*/
-        // urlBuilder.append("&" + URLEncoder.encode("ORD","UTF-8") + "=" + URLEncoder.encode("NAME", "UTF-8")); /*순서*/
+        
         // //url 확인
         System.out.println(urlBuilder.toString());
 
@@ -115,7 +107,7 @@ public class TCLAPIController {//Trauma Center List
         Node elem_node = elem_nodelist.item(0);
         return elem_node.getNodeValue();
     }
-    @GetMapping("/TCL_Basics/{tb_hpid}")
+    @GetMapping("/TCL_Basics/{tb_hpid}")//외산센터 기본정보 가져오기
     public Map<String, Object> getTCLBasic_info(@PathVariable String tb_hpid) {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 
@@ -123,7 +115,7 @@ public class TCLAPIController {//Trauma Center List
         resultMap.put("basic",list);
         return resultMap;
     }
-    @GetMapping("/TCLHBed")
+    @GetMapping("/TCLHBed")//외상센터 병상정보 가져오기
     public Map<String, Object> getTCLHBed() {
         Map<String, Object> resultMap = new LinkedHashMap<String, Object>();
 
